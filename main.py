@@ -23,6 +23,8 @@ OUTPUT_PATH = "/output/entry.txt"
 def main() -> None:
     assert 1 <= len(LINE) <= 200, "entry must be 1-200 characters"
     assert "\n" not in LINE, "entry must be a single line"
+    assert LINE == LINE.strip(), "entry must not start or end with space"
+    assert "\u2014" in LINE, "the em dash is part of the line's voice"
     os.makedirs(os.path.dirname(OUTPUT_PATH), exist_ok=True)
     with open(OUTPUT_PATH, "w", encoding="utf-8", newline="\n") as f:
         f.write(LINE)
